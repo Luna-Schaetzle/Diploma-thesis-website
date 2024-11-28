@@ -9,12 +9,14 @@ import AccountView from '../views/AccountView.vue';
 import ApplicationsView from '../views/ApplicationsView.vue';
 import OCRView from '../views/OCRView.vue';
 
+
 // Importieren Sie die Sidebar-Komponenten als Unterrouten
 import LuminaraOllama from '../components/LuminaraOllama.vue';
 import OllamaChat from '../components/OllamaChat.vue';
 import LuminaraImage from '../components/LuminaraImage.vue';
 import LuminaraGallery from '../components/LuminaraGallery.vue';
 import ChatGPT from '../components/ChatGPTComponent.vue';
+import OpenAIImage from '../views/OpenAIImage.vue';
 
 import LoginComponent from "@/components/LoginComponent";
 import RegisterComponent from "@/components/RegisterComponent";
@@ -73,6 +75,12 @@ const routes = [
     ],
   },
   { path: '/ocr', name: 'OCR', component: OCRView },
+  {
+    path: "/openaiimage", // Der Pfad, der aufgerufen wird
+    name: "OpenAIImage",
+    component: OpenAIImage, // Die Komponente, die bei diesem Pfad geladen wird
+    meta: { requiresAuth: true }, // Auth erforderlich
+  },
   { path: "/login", name: "Login", component: LoginComponent },
   { path: "/register", name: "Register", component: RegisterComponent },
 ];

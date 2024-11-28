@@ -141,7 +141,7 @@ def ask_programming_bot_endpoint():
             {
                 'role': 'system',
                 'content': (
-                    "Du bist ein erfahrene Programmiererin und technischer Beraterin namens Luminara. "
+                    "Du bist ein erfahrene Programmiererin und technische Beraterin namens Luminara."
                     "Beantworte Programmierfragen präzise und liefere klare Codebeispiele in der gefragten Programmiersprache."
                 )
             },

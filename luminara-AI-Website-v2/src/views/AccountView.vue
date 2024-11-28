@@ -51,6 +51,7 @@
               Admin Dashboard
             </button>
           </router-link>
+          <button @click="resetTokensTo100">Tokens auf 100 zurücksetzen</button>
           <!-- Weitere Admin-spezifische Aktionen hier hinzufügen -->
         </div>
       </section>
@@ -121,7 +122,7 @@ export default {
         : "Unbekannt";
     },
     tokensDisplay() {
-      return this.role === 'admin' ? 'Unbegrenzt' : this.tokens;
+      return this.tokens;
     }
   },
   async created() {
@@ -193,6 +194,25 @@ export default {
       } catch (error) {
         this.errorMessage = "Fehler beim Abmelden: " + error.message;
         this.successMessage = "";
+      }
+    },
+    async resetTokensTo100() {
+      const db = getFirestore();
+      const auth = getAuth();
+      const currentUser = auth.currentUser;
+
+      if (currentUser) {
+        try {
+          const userRef = doc(db, "users", currentUser.uid);
+          await updateDoc(userRef, {
+            tokens: 100,
+          });
+          this.successMessage = "Deine Tokens wurden auf 100 zurückgesetzt.";
+          this.errorMessage = "";
+        } catch (error) {
+          this.errorMessage = "Fehler beim Zurücksetzen der Tokens: " + error.message;
+          this.successMessage = "";
+        }
       }
     },
   },

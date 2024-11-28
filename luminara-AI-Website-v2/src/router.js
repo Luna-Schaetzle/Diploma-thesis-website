@@ -13,6 +13,7 @@ import DashboardView from '../src/views/DashboardView.vue';
 import AccountView from '../src/views/AccountView.vue';
 import ApplicationsView from '../src/views/ApplicationsView.vue';
 import OCRView from '../src/views/OCRView.vue';
+import OpenAIImage from '../src/views/OpenAIImage.vue';
 
 // Importieren Sie die Sidebar-Komponenten als Unterrouten
 import LuminaraOllama from '../src/components/LuminaraOllama.vue';
@@ -88,6 +89,7 @@ const routes = [
     ],
   },
   { path: '/ocr', name: 'OCR', component: OCRView },
+  { path: '/openaiimage', name: 'openaiimage', component: OpenAIImage },
   { path: "/login", name: "Login", component: LoginComponent },
   { path: "/register", name: "Register", component: RegisterComponent },
   { path: '/admin', component: AdminDashboard, meta: { requiresAdmin: true } },

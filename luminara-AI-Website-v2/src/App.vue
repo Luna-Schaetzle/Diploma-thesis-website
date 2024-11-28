@@ -7,6 +7,7 @@
         <router-link v-if="user" to="/account" class="nav-link" exact-active-class="active">Account</router-link>
         <router-link v-if="user" to="/applications" class="nav-link" exact-active-class="active">Chat Bots</router-link>
         <router-link v-if="user" to="/ocr" class="nav-link" exact-active-class="active">OCR</router-link>
+        <router-link v-if="user" to="/openaiimage" class="nav-link" exact-active-class="active">OpenAI Image</router-link>
         
       </nav>
 
