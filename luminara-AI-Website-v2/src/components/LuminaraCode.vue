@@ -133,7 +133,10 @@
         isDarkMode: false, // Dark Mode Status
         models: [ // Liste der verfügbaren Modelle
           { name: "Qwen2.5-Coder 0.5B", value: "qwen2.5-coder:0.5b" },
-          { name: "Qwen2.5-Coder 7B", value: "qwen2.5-coder:7b" },
+          { name: "Qwen2.5-Coder 1.5B", value: "qwen2.5-coder:1.5b" },
+          { name: "Qwen2.5-Coder 3B", value: "qwen2.5-coder:3b" },
+          { name: "Qwen2.5-Coder 7B", value: "qwen2.5-coder" },
+
           { name: "CodeLlama", value: "codellama" },
           // Weitere Modelle können hier hinzugefügt werden
         ],
@@ -183,7 +186,7 @@
   
         try {
           // Anfrage an das Flask-Backend senden
-          const response = await axios.post("http://10.10.11.11:5000/ask_programming_bot", payload);
+          const response = await axios.post("http://localhost:5000/ask_programming_bot", payload);
           
           if (response.data.choices) {
             const botResponse = response.data.choices[0].text;

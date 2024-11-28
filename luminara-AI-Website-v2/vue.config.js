@@ -1,3 +1,3 @@
-export default {
-  publicPath: './'
-}
+module.exports = {
+  // Deine Konfiguration
+};
