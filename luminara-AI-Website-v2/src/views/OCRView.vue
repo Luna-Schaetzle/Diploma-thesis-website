@@ -143,7 +143,7 @@ export default {
       formData.append("image", this.selectedImage);
 
       try {
-        const response = await axios.post("http://127.0.0.1:5000/ocr", formData, {
+        const response = await axios.post("http://10.10.11.11:5001/ocr", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

@@ -100,7 +100,7 @@ export default {
             if (currentTokens >= 5) {
               // Anfrage an die OpenAI-API für die Bildgenerierung
               const imageResponse = await openai.images.generate({
-                model: "dall-e-3",
+                model: "dall-e-2",
                 prompt: this.prompt,
                 size: "1024x1024",
                 quality: "standard",

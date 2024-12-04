@@ -100,7 +100,7 @@ export default {
       try {
         // Anfrage an Ollama senden
         const response = await axios.post(
-          "http://localhost:5000/ask_ollama",
+          "http://10.10.11.11:5001/ask_ollama",
           {
             prompt: this.userInput,
             model: this.selectedModel,

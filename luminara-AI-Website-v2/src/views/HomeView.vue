@@ -98,6 +98,47 @@
       </div>
     </section>
 
+    <!-- Impressum -->
+    <section class="bg-gray-100 py-16">
+  <div class="container mx-auto px-4">
+    <h2 class="section-title">Impressum</h2>
+    <p class="section-description">
+      Angaben gemäß § 5 E-Commerce-Gesetz (ECG), § 14 Unternehmensgesetzbuch (UGB) und § 24 Mediengesetz (MedienG):
+    </p>
+    <p>
+      <strong>Betreiber der Website:</strong><br>
+      Luna Schätzle<br>
+      Morsbacher straße 8b<br>
+      A-6330 Kufstein<br>
+      Österreich
+    </p>
+    <p>
+      <strong>Kontakt:</strong><br>
+      Telefon: +43 660 3882465<br>
+      E-Mail: <a href="mailto:LuminaraAI.Website@gmail.com" class="text-blue-500 underline">LuminaraAI.Website@gmail.com</a>
+    </p>
+    <p>
+      <strong>Unternehmensgegenstand:</strong><br>
+      Entwicklung und Bereitstellung einer Schüler-KI-Plattform
+    </p>
+    <p>
+      <strong>Aufsichtsbehörde:</strong><br>
+      Bezirkshauptmannschaft Kufstein
+    </p>
+    <p>
+      <strong>Haftungsausschluss:</strong><br>
+      Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
+    </p>
+    <p>
+      <strong>Online-Streitbeilegung:</strong><br>
+      Verbraucher haben die Möglichkeit, Beschwerden an die Online-Streitbeilegungsplattform der EU zu richten: 
+      <a href="https://ec.europa.eu/odr" target="_blank" class="text-blue-500 underline">https://ec.europa.eu/odr</a>.
+      Sie können allfällige Beschwerden auch an die oben angegebene E-Mail-Adresse richten.
+    </p>
+  </div>
+</section>
+
+
     <!-- Footer -->
     <footer class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-6">
       <div class="container mx-auto text-center">
