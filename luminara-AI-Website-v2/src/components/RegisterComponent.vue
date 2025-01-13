@@ -31,6 +31,11 @@
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { getFirestore, doc, setDoc, serverTimestamp, getDoc } from "firebase/firestore";
 
+//Debugging
+import { setLogLevel } from "firebase/firestore";
+setLogLevel("debug");
+
+
 export default {
   data() {
     return {

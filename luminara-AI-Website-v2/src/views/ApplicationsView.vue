@@ -4,7 +4,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <header>
-        <h1>Luminara AI v.0.4 (experimental)</h1>
+        <h1>Luminara AI v.0.5 (experimental)</h1>
       </header>
 
       <!-- Navigation als Sidebar -->

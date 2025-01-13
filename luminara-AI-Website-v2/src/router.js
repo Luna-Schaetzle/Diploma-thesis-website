@@ -30,6 +30,8 @@ import RegisterComponent from "../src/components/RegisterComponent";
 import AdminDashboard from '../src/views/AdminDashboard.vue';
 import ApplicationDetails from '../src/components/ApplicationDetails.vue';
 
+import ImpressumView from './views/ImpressumView.vue';
+import DataProtection from './views/DataProtection.vue';
 
 const routes = [
   {
@@ -94,6 +96,9 @@ const routes = [
   { path: "/register", name: "Register", component: RegisterComponent },
   { path: '/admin', component: AdminDashboard, meta: { requiresAdmin: true } },
   { path: '/admin/applications/:id', component: ApplicationDetails, meta: { requiresAdmin: true } },
+  { path: '/impressum', name: 'Impressum', component: ImpressumView },
+  { path: '/dataprotection', name: 'DataProtection', component: DataProtection },
+
 ];
 
 const router = createRouter({

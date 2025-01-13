@@ -21,6 +21,16 @@
 
     <!-- Router View für Hauptansichten -->
     <router-view></router-view>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+      <p>AI can make mistakes, please use with caution, and always double-check the results.</p>
+      &copy; 2024 Luminara AI-Student-Plattform | All Rights Reserved | 
+      <router-link to="/impressum" class="footer-link">Impressum</router-link> | 
+      <router-link to="/dataprotection" class="footer-link">Datenschutz</router-link> 
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -77,6 +87,16 @@ export default {
 
 <style scoped>
 /* Grundlegende Stile für die App */
+
+.footer-link {
+  color: rgb(131, 10, 131);  /* This sets the text color to violet */
+  text-decoration: none;  /* Optional: removes underline */
+}
+
+.footer-link:hover {
+  text-decoration: underline;  /* Optional: adds underline on hover */
+}
+
 #app {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f5f7fa;
