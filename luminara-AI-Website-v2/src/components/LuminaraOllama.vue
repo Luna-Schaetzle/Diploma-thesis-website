@@ -14,6 +14,7 @@
           <option value="gemma2:27b">Gemma2:27b von Google</option>
           <option value="llava:13b">LLaVA 13B (langsam)</option>
           <option value="phi4">Neuestes Modell von Microsoft</option>
+          <option value="deepseek-r1">DeepSeek R1 With Thinking capailities</option>
         </select>
       </div>
 

@@ -1,50 +1,81 @@
 <template>
-  <div class="chat-container">
-    <h1>ChatGPT</h1>
-    <div class="token-info">
-      <p>Verbleibende Tokens: <strong>{{ tokens }}</strong></p>
-    </div>
+  <div class="app-container">
+    <div class="chat-container">
+      <h1>ChatGPT</h1>
+      <div class="token-info">
+        <p>Verbleibende Tokens: <strong>{{ tokens }}</strong></p>
+      </div>
 
-    <div class="model-selection">
-      <label for="model">Wähle ein Modell:</label>
-      <select v-model="selectedModel" id="model">
-        <option value="gpt-4o">GPT-4o</option>
-        <option value="gpt-4o-mini">GPT-4 Mini</option>
-      </select>
-    </div>
+      <div class="model-selection">
+        <label for="model">Wähle ein Modell:</label>
+        <select v-model="selectedModel" id="model">
+          <option value="gpt-4o">GPT-4o</option>
+          <option value="gpt-4o-mini">GPT-4 Mini</option>
+        </select>
+      </div>
 
-    <!-- Chat-Auswahl -->
-    <div class="chat-selection">
-      <h3>Gespeicherte Chats</h3>
+      <!-- Chat-Auswahl -->
+      <div class="chat-selection">
+        <h3>Gespeicherte Chats</h3>
+        <ul>
+          <li v-for="(chat, index) in chats" :key="index" class="chat-item">
+            <div class="chat-info">
+              <strong @click="loadChat(chat.id)" class="chat-name">{{ chat.name }}</strong>
+              <span @click.stop="deleteChat(chat.id)" class="delete-button">🗑️</span>
+            </div>
+            <p>{{ chat.messages.length }} Nachrichten</p>
+          </li>
+        </ul>
+        <button @click="startNewChat" class="new-chat-button">Neuen Chat starten</button>
+      </div>
+
+      <!-- Aktueller Chat -->
+      <div class="chat-box" v-if="currentChat">
+        <h3>{{ currentChat.name }}</h3>
+        <div v-for="(message, index) in currentChat.messages" :key="index" :class="['message', message.type]">
+          <p>{{ message.text }}</p>
+        </div>
+      </div>
+
+      <div class="input-area" v-if="currentChat">
+        <input v-model="userInput" placeholder="Schreibe etwas..." @keydown.enter="sendMessage" class="chat-input" />
+        <button @click="sendMessage" :disabled="loading || tokens <= 0" class="send-button">
+          Absenden
+        </button>
+      </div>
+
+      <div v-if="loading" class="loading">Nachricht wird gesendet...</div>
+      <div v-if="error" class="error">{{ error }}</div>
+    </div>
+    <!-- Datenschutzhinweis -->
+    <div class="privacy-notice">
+      <h2>Datenschutzhinweis</h2>
+      <p>
+        Bei der Nutzung dieses Chatbots werden Ihre Eingaben an die
+        ChatGPT-API von OpenAI übermittelt, um Antworten zu generieren. Bitte
+        geben Sie keine persönlichen oder sensiblen Daten wie Namen,
+        Adressen, E-Mail-Adressen oder finanzielle Informationen ein.
+      </p>
+      <p>
+        Tipps zur Datensicherheit:
       <ul>
-        <li v-for="(chat, index) in chats" :key="index" class="chat-item">
-          <div class="chat-info">
-            <strong @click="loadChat(chat.id)" class="chat-name">{{ chat.name }}</strong>
-            <span @click.stop="deleteChat(chat.id)" class="delete-button">🗑️</span>
-          </div>
-          <p>{{ chat.messages.length }} Nachrichten</p>
+        <li>
+          Vermeiden Sie die Eingabe von personenbezogenen Daten oder
+          vertraulichen Informationen.
+        </li>
+        <li>
+          Nutzen Sie den Chatbot ausschließlich für allgemeine Anfragen und
+          vermeiden Sie die Preisgabe sensibler Details.
+        </li>
+        <li>
+          Seien Sie sich bewusst, dass Ihre Eingaben zur Verbesserung der
+          KI-Modelle verwendet werden könnten. Weitere Informationen finden
+          Sie in der
+          <a href="https://openai.com/policies/privacy-policy" target="_blank">Datenschutzerklärung von OpenAI</a>.
         </li>
       </ul>
-      <button @click="startNewChat" class="new-chat-button">Neuen Chat starten</button>
+      </p>
     </div>
-
-    <!-- Aktueller Chat -->
-    <div class="chat-box" v-if="currentChat">
-      <h3>{{ currentChat.name }}</h3>
-      <div v-for="(message, index) in currentChat.messages" :key="index" :class="['message', message.type]">
-        <p>{{ message.text }}</p>
-      </div>
-    </div>
-
-    <div class="input-area" v-if="currentChat">
-      <input v-model="userInput" placeholder="Schreibe etwas..." @keydown.enter="sendMessage" class="chat-input" />
-      <button @click="sendMessage" :disabled="loading || tokens <= 0" class="send-button">
-        Absenden
-      </button>
-    </div>
-
-    <div v-if="loading" class="loading">Nachricht wird gesendet...</div>
-    <div v-if="error" class="error">{{ error }}</div>
   </div>
 </template>
 
@@ -213,6 +244,37 @@ export default {
 </script>
 
 <style scoped>
+
+.app-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.chat-container {
+  flex: 1;
+  margin-right: 20px;
+  /* Weitere bestehende Stile */
+}
+
+.privacy-notice {
+  width: 300px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  /* Weitere bestehende Stile */
+}
+
+.privacy-notice h2 {
+  margin-top: 0;
+}
+
+.privacy-notice ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
 .chat-container {
   font-family: Arial, sans-serif;
   max-width: 700px;
@@ -291,30 +353,37 @@ export default {
 .error {
   color: red;
 }
+
 .chat-selection {
   margin-bottom: 15px;
 }
+
 .chat-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .chat-name {
   cursor: pointer;
 }
+
 .chat-name:hover {
   text-decoration: underline;
 }
+
 .delete-button {
   cursor: pointer;
   color: red;
 }
+
 .chat-item {
   padding: 5px;
   background-color: #f0f0f0;
   border-radius: 4px;
   margin-bottom: 5px;
 }
+
 .new-chat-button {
   margin-top: 10px;
 }
