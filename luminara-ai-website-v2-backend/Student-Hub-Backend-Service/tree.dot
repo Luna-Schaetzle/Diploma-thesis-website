@@ -1,0 +1,24 @@
+[01;34m.[0m
+├── app.py
+├── config.py
+├── [01;35mflask_service-2.png[0m
+├── flask_service-2.puml
+├── [01;35mflask_service-2.svg[0m
+├── [01;35mflask_service.png[0m
+├── flask_service.puml
+├── __init__.py
+├── [01;35mpackages_FlaskService.png[0m
+├── [01;34mroutes[0m
+│   ├── chat_route.py
+│   ├── __init__.py
+│   ├── ocr_route.py
+│   └── programming_bot_rout.py
+├── tree.dot
+├── [01;34muploads[0m
+└── [01;34mutils[0m
+    ├── markdown_converter.py
+    ├── ocr.py
+    ├── text_processing
+    └── text_processing.py
+
+4 directories, 18 files

@@ -1,0 +1,41 @@
+@startuml
+skinparam FolderBackgroundColor LightGray
+  file "__init__.py"
+folder "__pycache__" {
+  file "config.cpython-312.pyc"
+}
+  file "app.py"
+  file "config.py"
+  file "flask_service-2.png"
+  file "flask_service-2.puml"
+  file "flask_service-2.svg"
+  file "flask_service.png"
+  file "flask_service.puml"
+  file "packages_FlaskService.png"
+folder "routes" {
+  file "__init__.py"
+folder "__pycache__" {
+  file "__init__.cpython-312.pyc"
+  file "chat_route.cpython-312.pyc"
+  file "ocr_route.cpython-312.pyc"
+}
+  file "chat_route.py"
+  file "ocr_route.py"
+  file "programming_bot_rout.py"
+}
+  file "tree-generate.py"
+  file "tree.dot"
+folder "uploads" {
+}
+folder "utils" {
+folder "__pycache__" {
+  file "markdown_converter.cpython-312.pyc"
+  file "ocr.cpython-312.pyc"
+  file "text_processing.cpython-312.pyc"
+}
+  file "markdown_converter.py"
+  file "ocr.py"
+  file "text_processing"
+  file "text_processing.py"
+}
+@enduml
