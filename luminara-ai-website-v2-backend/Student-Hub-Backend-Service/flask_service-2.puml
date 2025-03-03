@@ -1,0 +1,79 @@
+@startuml
+' Design-Anpassungen
+skinparam classAttributeIconSize 0
+skinparam shadowing true
+skinparam roundcorner 15
+skinparam class {
+    BackgroundColor White
+    ArrowColor DarkBlue
+    BorderColor Black
+}
+skinparam package {
+    BackgroundColor LightGray
+    BorderColor Black
+}
+
+' Hauptpaket: Flask Service
+package "Flask Service" <<Rectangle>> {
+    
+    class "app.py" << (M,#FF7700) Main >> {
+        + create_app() : Flask
+        + run() : None
+        ' Haupt-Flask-Instanz, die alle Routen registriert
+    }
+
+    package "Routes" <<Rectangle>> {
+        
+        class "chat_route.py" << Controller >> {
+            + handle_chat_request(req) : Response
+            ' Bearbeitet Chat-Anfragen, verarbeitet Input und generiert Antworten
+        }
+        
+        class "ocr_route.py" {
+            + process_ocr(req) : Response
+            ' Verarbeitet hochgeladene Bilder und führt OCR aus
+        }
+        
+        class "programming_bot_route.py" {
+            + generate_code(req) : Response
+            ' Erstellt Code basierend auf Benutzereingaben
+        }
+    }
+
+    package "Utils" <<Rectangle>> {
+        
+        class "markdown_converter.py" {
+            + convert_to_html(text) : str
+            ' Konvertiert Markdown zu HTML
+        }
+        
+        class "ocr.py" {
+            + extract_text(image) : str
+            ' Führt Texterkennung auf einem Bild aus
+        }
+        
+        class "text_processing.py" {
+            + clean_text(text) : str
+            + analyze_text(text) : dict
+            ' Bereinigt und analysiert Texte für NLP
+        }
+    }
+    
+    package "Config" <<Rectangle>> {
+        class "config.py" {
+            ' Konfigurationsdatei für Flask und Umgebungsvariablen
+        }
+    }
+
+    ' Beziehungen
+    app.py --> chat_route.py : "Nutze"
+    app.py --> ocr_route.py : "Nutze"
+    app.py --> programming_bot_route.py : "Nutze"
+
+    chat_route.py --> text_processing.py : "Verarbeitet Text"
+    ocr_route.py --> ocr.py : "Führt OCR durch"
+    programming_bot_route.py --> markdown_converter.py : "Konvertiert Markdown"
+
+}
+@enduml
+

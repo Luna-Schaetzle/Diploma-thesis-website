@@ -1,0 +1,44 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+
+package "Flask Service" {
+    class "app.py" {
+        + create_app()
+        + run()
+    }
+
+    package "routes" {
+        class "chat_route.py" {
+            + handle_chat_request()
+        }
+        class "ocr_route.py" {
+            + process_ocr()
+        }
+        class "programming_bot_route.py" {
+            + generate_code()
+        }
+    }
+
+    package "utils" {
+        class "markdown_converter.py" {
+            + convert_to_html()
+        }
+        class "ocr.py" {
+            + extract_text()
+        }
+        class "text_processing.py" {
+            + clean_text()
+            + analyze_text()
+        }
+    }
+
+    app.py --> chat_route.py
+    app.py --> ocr_route.py
+    app.py --> programming_bot_route.py
+    chat_route.py --> text_processing.py
+    ocr_route.py --> ocr.py
+    programming_bot_route.py --> markdown_converter.py
+}
+@enduml
+
