@@ -16,7 +16,7 @@ ocr_bp = Blueprint('ocr_bp', __name__)
 
 def allowed_file(filename):
     """
-    Überprüft, ob die Datei eine erlaubte Erweiterung hat.
+    Checks if the file has an allowed extension.
     """
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in Config.ALLOWED_EXTENSIONS
@@ -24,9 +24,9 @@ def allowed_file(filename):
 @ocr_bp.route('/ocr', methods=['POST'])
 def process_ocr():
     """
-    OCR-Endpunkt: Nimmt ein Bild (als Base64-String oder als Datei), extrahiert Text mithilfe von OCR,
-    verbessert den Text mit Ollama und gibt sowohl den rohen als auch den verbesserten Text zurück.
-    Unterstützt sowohl JSON- als auch multipart/form-data-Anfragen.
+    OCR endpoint: Accepts an image (as a Base64 string or as a file), extracts text using OCR,
+    improves the text with Ollama, and returns both the raw and improved text.
+    Supports both JSON and multipart/form-data requests.
     """
     img_path = None  # Initialisiere img_path für die Cleanup
     try:

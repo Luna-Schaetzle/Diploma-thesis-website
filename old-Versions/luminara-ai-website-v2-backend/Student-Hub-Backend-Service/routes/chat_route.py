@@ -49,6 +49,7 @@ def ask_ollama_endpoint():
         logger.error(f'Fehler beim Kommunizieren mit Ollama: {str(e)}')
         return jsonify({'error': 'Fehler beim Kommunizieren mit Ollama'}), 500
 
+
 @chat_bp.route('/ask_ollama_vision', methods=['POST'])
 def ask_ollama_vision_endpoint():
     """
